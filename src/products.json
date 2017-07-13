@@ -1,0 +1,61 @@
+[
+    {
+        "id"         : 1,
+        "name"       : "LG 32LH530V",
+        "price"      : 14390,
+        "is_sale"    : true,        
+        "diagonal"   : 32,
+        "hdmi_ports" : 2,
+        "usb_ports"  : 1,
+        "resolution" : "1080p",
+        "imgage_url" : "https://avatars.mds.yandex.net/get-mpic/195452/img_id2675042995108666739/5"
+    }, 
+
+    {
+        "id"         : 2,        
+        "name"       : "LG 43UH603V",
+        "price"      : 23790,
+        "is_sale"    : false,        
+        "diagonal"   : 50,
+        "hdmi_ports" : 3,
+        "usb_ports"  : 1,
+        "resolution" : "4K",
+        "imgage_url" : "https://avatars.mds.yandex.net/get-mpic/199079/img_id1364412001921645396/5"
+    }, 
+
+    {
+        "id"         : 3,                
+        "name"       : "Philips 43PFT4001",
+        "price"      : 30000,
+        "is_sale"    : true,        
+        "diagonal"   : 43,
+        "hdmi_ports" : 2,
+        "usb_ports"  : 1,
+        "resolution" : "720p",
+        "imgage_url" : "https://avatars.mds.yandex.net/get-mpic/175985/img_id2808042031870647084/5"
+    }, 
+
+    {
+        "id"         : 4,                
+        "name"       : "Samsung UE40K6500AU",
+        "price"      : 40000,
+        "is_sale"    : false,        
+        "diagonal"   : 32,
+        "hdmi_ports" : 4,
+        "usb_ports"  : 1,
+        "resolution" : "1080p",
+        "imgage_url" : "https://avatars.mds.yandex.net/get-mpic/175985/img_id462686458249382671/5"
+    }, 
+
+    {
+        "id"         : 5, 
+        "name"       : "Samsung UE40J5200AF",
+        "price"      : 20000,
+        "is_sale"    : true,
+        "diagonal"   : 44,
+        "hdmi_ports" : 3,
+        "usb_ports"  : 3,
+        "resolution" : "4K",
+        "imgage_url" : "https://avatars.mds.yandex.net/get-mpic/96484/img_id2476478665299527604/5"
+    }
+]
