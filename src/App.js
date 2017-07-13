@@ -13,7 +13,7 @@ class App extends Component {
           <h2>Магазин телевизоров</h2>
         </div>
         <div className="Main-section">
-            <ProductList products={this.props.products} />       
+          <ProductList products={this.props.products} />       
           <Cart />
         </div>
       </div>
