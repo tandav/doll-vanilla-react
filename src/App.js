@@ -14,7 +14,7 @@ class App extends Component {
         </div>
         <div className="Main-section">
           <ProductList products={this.props.products} />       
-          <Cart />
+          <Cart items_to_buy={null}/>
         </div>
       </div>
     );

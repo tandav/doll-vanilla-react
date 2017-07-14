@@ -5,15 +5,16 @@ class Cart extends Component {
   render() {
     return (
     <div className="Cart">
-      SHOPPING CART
+      <h1>Корзина:</h1>
+      SHOPPING CART ITEM
       <hr/>
-      SHOPPING CART
+      SHOPPING CART ITEM
       <hr/>
-      SHOPPING CART
+      SHOPPING CART ITEM
       <hr/>
-      SHOPPING CART
+      SHOPPING CART ITEM
       <hr/>
-      SHOPPING CART
+      SHOPPING CART ITEM
       <hr/>
     </div>
     );

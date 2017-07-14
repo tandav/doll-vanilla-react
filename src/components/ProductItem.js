@@ -9,10 +9,15 @@ class ProductItem extends Component {
 
     let is_sale
     if (this.props.specs["sale_items"]) {
-      is_sale = <span>В продаже: {this.props.specs["sale_items"]} шт.</span>
+      is_sale = <div className="AddToCart">
+                  <span>В продаже: {this.props.specs["sale_items"]} шт.</span>
+                  <button>В корзину: {this.props.specs.price} руб.</button>
+                </div>
     }
     else {
-      is_sale = <span style={not_sale}>Нет в наличии</span>
+      is_sale = <div className="AddToCart">
+        <span style={not_sale}>Нет в наличии</span>
+      </div>
     }
 
     return (
@@ -25,10 +30,7 @@ class ProductItem extends Component {
           <li>HDMI-порты: {this.props.specs.hdmi_ports}</li>
           <li>USB-порты: {this.props.specs.usb_ports}</li>
         </ul>
-        <div className="AddToCart">
-          {is_sale}
-        <button>В корзину: {this.props.specs.price} руб.</button>
-        </div>
+        {is_sale}
       </div>
     );
   }
