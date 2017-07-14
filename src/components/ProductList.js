@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-import List from './List';
-import Filter from './Filter';
 import './ProductList.css';
+import ProductItem from './ProductItem';
+
 
 class ProductList extends Component {
   render() {
     return (
-      <div className="ProductList">
-        <List products={this.props.products}/>
-        <Filter />
+      <div className="List"> {
+        this.props.products.map(x => <ProductItem key={x.id} specs={x}/>)
+      }
       </div>
     );
   }
 }
 
 export default ProductList;
-
-// x.filter(product => product["id"] == 2)

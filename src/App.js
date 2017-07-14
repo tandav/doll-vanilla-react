@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
+import Filter from './components/Filter';
 import products_json_from_file from './products.json';
 
 class App extends Component {
@@ -33,8 +34,10 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>TV Store</h2>
         </div>
+
         <div className="Main-section">
-          <ProductList products={this.state.products} />       
+          <ProductList products={this.state.products} />    
+          <Filter />
           <Cart items_to_buy={null}/>
         </div>
       </div>
@@ -43,3 +46,4 @@ class App extends Component {
 }
 
 export default App;
+// x.filter(product => product["id"] == 2)
