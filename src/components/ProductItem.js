@@ -11,7 +11,7 @@ class ProductItem extends Component {
     if (this.props.specs["sale_items"]) {
       is_sale = <div className="AddToCart">
                   <span>В продаже: {this.props.specs["sale_items"]} шт.</span>
-                  <button>В корзину: {this.props.specs.price} руб.</button>
+                  <button onClick={() => this.props.addItem(123)}>В корзину: {this.props.specs.price} руб.</button>
                 </div>
     }
     else {

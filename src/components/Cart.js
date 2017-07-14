@@ -6,16 +6,7 @@ class Cart extends Component {
     return (
     <div className="Cart">
       <h1>Корзина:</h1>
-      SHOPPING CART ITEM
-      <hr/>
-      SHOPPING CART ITEM
-      <hr/>
-      SHOPPING CART ITEM
-      <hr/>
-      SHOPPING CART ITEM
-      <hr/>
-      SHOPPING CART ITEM
-      <hr/>
+      {this.props.items_to_buy}
     </div>
     );
   }

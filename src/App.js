@@ -24,6 +24,13 @@ class App extends Component {
     // this.setState({products: products_json_from_file});
   }
 
+  handleAddItem = (id) => {
+    console.log("clicked fucking", id)
+    // this.setState({
+    //   toBuy: id
+    // })
+  }
+
   render() {
     if (!this.state.products) {
       return <h1>Loading...</h1>
@@ -36,9 +43,12 @@ class App extends Component {
         </div>
 
         <div className="Main-section">
-          <ProductList products={this.state.products} />    
+          <ProductList
+            products={this.state.products}
+            addItem={this.handleAddItem}
+          />    
           <Filter />
-          <Cart items_to_buy={null}/>
+          <Cart items_to_buy={this.state.toBuy}/>
         </div>
       </div>
     );
