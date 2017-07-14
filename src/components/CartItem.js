@@ -3,7 +3,6 @@ import './CartItem.css';
 
 class CartItem extends Component {
   render() {
-    console.log(this.props)
     return (
       <div className="CartItem">
         <img src={this.props.specs.imgage_url} alt="TV"/>

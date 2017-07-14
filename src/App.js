@@ -4,7 +4,7 @@ import './App.css';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
 import Filter from './components/Filter';
-import products_json_from_file from './products.json';
+// import products_json_from_file from './products.json';
 
 class App extends Component {
   constructor(props) {
@@ -25,38 +25,25 @@ class App extends Component {
             toBuy: prevState.toBuy
           }
         })
-        // this.setState({
-          // products: json
-          // });
       })
-    // this.setState({products: products_json_from_file});
+    // this.setState({products: products_json_from_file}); // TODO: add toBuy
   }
 
   handleAddItem = (id) => {
     // SHITTY CODE START
     let toBuy_temp = this.state.toBuy
-    let new_tv = this.state.products.filter(product => product["id"] == id)[0]
+    let new_tv = this.state.products.filter(product => product["id"] === id)[0]
     toBuy_temp.push(new_tv)
     // SHITTY CODE END
 
     this.setState((prevState) => {
+      const id_index = prevState.products.findIndex(product => product.id === id)
+      prevState.products[id_index].sale_items -= 1
       return {
         products: prevState.products,
         toBuy: toBuy_temp
       };
     });
-
-    // console.log(this.state.toBuy)
-// 
-    // console.log(this.state)
-
-    // this.setState((prevState, id) => {
-      // console.log(prevState.toBuy)
-      // return {toBuy: prevState.toBuy.push(id)}
-    // })
-    // console.log(this.state.products.filter(product => product["id"] == id)[0]["name"])
-    
-  // x.filter(product => product["id"] == 2)
   }
 
   render() {
