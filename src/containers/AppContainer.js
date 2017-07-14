@@ -9,15 +9,15 @@ class AppContainer extends Component {
   }
 
   componentDidMount() {
-    // const url = 'https://gist.githubusercontent.com/anonymous/2ab2b034ccb396579f51c021a098bde1/raw/77e863caeaf20d39e14c6907a7b5b8900acbbca9/products.json'
-    // fetch(url)
-    //   .then(response => response.json())
-    //   .then(json => {
-    //     this.setState({
-    //       products: json
-    //       });
-    //   });
-    this.setState({products: products_json_from_file});
+    const url = 'https://gist.githubusercontent.com/anonymous/a7308e8584e8aa6a7dac5ab20eac0c87/raw/37d7fbb1a8f458648e2c7034e53c398f0c1eb30c/data.json'
+    fetch(url)
+      .then(response => response.json())
+      .then(json => {
+        this.setState({
+          products: json
+          });
+      });
+    // this.setState({products: products_json_from_file});
   }
 
   render() {
