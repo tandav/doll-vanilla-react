@@ -1,0 +1,13 @@
+.CartItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 10px;
+  list-style-type: none;
+  border: lightgray solid 1px;
+}
+
+.ProductSpecs {
+  list-style-type: none;
+  width: 200px;
+}
