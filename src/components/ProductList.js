@@ -3,8 +3,6 @@ import List from './List';
 import Filter from './Filter';
 import './ProductList.css';
 
-
-
 class ProductList extends Component {
   render() {
     return (
@@ -17,3 +15,5 @@ class ProductList extends Component {
 }
 
 export default ProductList;
+
+// x.filter(product => product["id"] == 2)
