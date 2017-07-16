@@ -10,7 +10,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      toBuy: []
+      // products: {},
+      toBuyInfo: {},
+      toBuyItems: []
     }
   }
 
@@ -21,33 +23,49 @@ class App extends Component {
       .then(json => {
         this.setState((prevState) => {
           return {
-            products: json,
-            toBuy: prevState.toBuy
+            productList: json,
+            toBuyInfo: prevState.toBuyInfo,
+            toBuyItems: prevState.toBuyItems
           }
         })
       })
-    // this.setState({products: products_json_from_file}); // TODO: add toBuy
+    // this.setState({productList: products_json_from_file}); // TODO: add toBuy
   }
 
   handleAddItem = (id) => {
     // SHITTY CODE START
-    let toBuy_temp = this.state.toBuy
-    let new_tv = this.state.products.filter(product => product["id"] === id)[0]
-    toBuy_temp.push(new_tv)
+    // let toBuy_temp = this.state.toBuy
+    // let added_product = this.state.productList.filter(product => product["id"] === id)[0]
+    // toBuy_temp.push(added_product)
     // SHITTY CODE END
 
     this.setState((prevState) => {
-      const id_index = prevState.products.findIndex(product => product.id === id)
-      prevState.products[id_index].sale_items -= 1
+      const id_index = prevState.productList.findIndex(product => product.id === id)
+      prevState.productList[id_index].sale_items -= 1
+
+      if (!prevState.toBuyInfo[id]) {
+        prevState.toBuyInfo[id] = 1
+      }
+      else {
+        prevState.toBuyInfo[id] += 1
+      }
+
+      const temp_cart_products = Object.keys(prevState.toBuyInfo).map(x => {
+        let temp = prevState.productList.filter(product => product["id"] == x)[0]
+        temp["quantity_to_by"] = prevState.toBuyInfo[x]
+        return temp
+      })
+      
       return {
-        products: prevState.products,
-        toBuy: toBuy_temp
+        // productList: prevState.productList,
+        // toBuyInfo: prevState.toBuyInfo
+        toBuyItems: temp_cart_products
       };
     });
   }
 
   render() {
-    if (!this.state.products) {
+    if (!this.state.productList) {
       return <h1>Loading...</h1>
     }
     return (
@@ -59,11 +77,11 @@ class App extends Component {
 
         <div className="Main-section">
           <ProductList
-            products={this.state.products}
+            products={this.state.productList}
             addItem={this.handleAddItem}
           />    
           <Filter />
-          <Cart items_to_buy={this.state.toBuy}/>
+           <Cart items_to_buy={this.state.toBuyItems}/> 
         </div>
       </div>
     );
