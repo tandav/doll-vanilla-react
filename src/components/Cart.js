@@ -11,10 +11,10 @@ class Cart extends Component {
           specs={x} />
         )
       } </div>
-    
+        
     return (
     <div className="Cart">
-      <h1>Корзина:</h1>
+      <h1>Корзина: {this.props.totalPrice} руб.</h1>
        {cartItems} 
     </div>
     );

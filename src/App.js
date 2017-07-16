@@ -10,9 +10,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // products: {},
+      products: {},
       toBuyInfo: {},
-      toBuyItems: []
+      toBuyItems: [],
+      totalPrice: 0
     }
   }
 
@@ -50,16 +51,19 @@ class App extends Component {
         prevState.toBuyInfo[id] += 1
       }
 
+      let totalPrice = 0
       const temp_cart_products = Object.keys(prevState.toBuyInfo).map(x => {
         let temp = prevState.productList.filter(product => product["id"] == x)[0]
         temp["quantity_to_by"] = prevState.toBuyInfo[x]
+        totalPrice += temp["quantity_to_by"] * temp["price"]
         return temp
       })
       
       return {
         // productList: prevState.productList,
         // toBuyInfo: prevState.toBuyInfo
-        toBuyItems: temp_cart_products
+        toBuyItems: temp_cart_products,
+        totalPrice: totalPrice
       };
     });
   }
@@ -81,7 +85,10 @@ class App extends Component {
             addItem={this.handleAddItem}
           />    
           <Filter />
-           <Cart items_to_buy={this.state.toBuyItems}/> 
+          <Cart
+            items_to_buy={this.state.toBuyItems}
+            totalPrice={this.state.totalPrice}
+          /> 
         </div>
       </div>
     );
