@@ -7,68 +7,65 @@ class Filter extends Component {
     this.state = {
       priceFrom: '',
       priceTo: '',
-      isSale: '',
-      LG_check: '',
-      Philips_check: '',
-      Samsung_check: '',
+      isSale: false,
+      LG_check: false,
+      Philips_check: false,
+      Samsung_check: false,
       diagFrom: '',
       diagTo: '',
-      _4k_check: '',
-      _1080p_check: '',
-      _1080i_check: '',
-      _720p_check: ''
+      _4k_check: false,
+      _1080p_check: false,
+      _1080i_check: false,
+      _720p_check: false
     }
   }
 
-  priceFrom_change         = (event) => this.setState({priceFrom:     event.target.value})
-  priceTo_change           = (event) => this.setState({priceTo:       event.target.value})
-  isSale_change            = (event) => this.setState({isSale:        event.target.value})
-  LG_check_change          = (event) => this.setState({LG_check:      event.target.value})
-  Philips_check_change     = (event) => this.setState({Philips_check: event.target.value})
-  Samsung_check_change     = (event) => this.setState({Samsung_check: event.target.value})
-  diagFrom_change          = (event) => this.setState({diagFrom:      event.target.value})
-  diagTo_change            = (event) => this.setState({diagTo:        event.target.value})
-  _4k_check_change         = (event) => this.setState({_4k_check:     event.target.value})
-  _1080p_check_change      = (event) => this.setState({_1080p_check:  event.target.value})
-  _1080i_check_change      = (event) => this.setState({_1080i_check:  event.target.value})
-  _720p_check_check_change = (event) => this.setState({_720p_check:   event.target.value})
+  filterChange = (event) => {
+    // this is from react docs https://facebook.github.io/react/docs/forms.html#handling-multiple-inputs
+    const target = event.target
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    const name = target.name
+    this.setState({
+      [name]: value
+    })
+  }
 
   render() {
     return (
       <form className="Filter">
         <label> 
           Цена:
-          <input type="number" name="price_from" placeholder="от" value={this.state.priceFrom} onChange={this.priceFrom_change} />
-          <input type="number" name="price_to" placeholder="до" value={this.state.priceTo} onChange={this.priceTo_change} />  
+          <input type="number" name="priceFrom" placeholder="от" value={this.state.priceFrom} onChange={this.filterChange} />
+          <input type="number" name="priceTo" placeholder="до" value={this.state.priceTo} onChange={this.filterChange} />  
         </label>
         <hr/>
         
         <label>
-           <input type="checkbox" name="is_sale" value={this.state.isSale} onChange={this.isSale_change} /> В продаже 
+           <input type="checkbox" name="isSale" value={this.state.isSale} onChange={this.filterChange} /> В продаже 
         </label>
         <hr/>
 
         <label>
           Производитель:<br/>
-          {/* <input type="checkbox" name="LG_check"/> LG<br/> */}
-          {/* <input type="checkbox" name="Philips_check"/> Philips<br/> */}
-          {/* <input type="checkbox" name="Samsung_check"/> Samsung<br/> */}
+           <input type="checkbox" name="LG_check" value={this.state.LG_check} onChange={this.filterChange} /> LG<br/> 
+           <input type="checkbox" name="Philips_check" value={this.state.Philips_check} onChange={this.filterChange} /> Philips<br/> 
+           <input type="checkbox" name="Samsung_check" value={this.state.Samsung_check} onChange={this.filterChange} /> Samsung<br/> 
         </label>
         <hr/> 
       
         <label>
           Диагональ:
-          {/* <input type="number" name="diag_from" placeholder="от"/> */}
-          {/* <input type="number" name="diag_to" placeholder="до"/> */}
+           <input type="number" name="diagFrom" placeholder="от"/> 
+           <input type="number" name="diagTo" placeholder="до"/> 
         </label>
         <hr/>
 
         <label>
           Разрешение:<br/>
-          {/* <input type="checkbox" name="4k_check"/> 4K<br/> */}
-          {/* <input type="checkbox" name="1080p_check"/> 1080p<br/> */}
-          {/* <input type="checkbox" name="1080i_check"/> 1080i<br/> */}
-          {/* <input type="checkbox"name="720p_check"/> 720p<br/> */}
+           <input type="checkbox" name="4k_check" value={this.state._4k_check} onChange={this.filterChange} /> 4K<br/> 
+           <input type="checkbox" name="1080p_check" value={this.state._1080p_check} onChange={this.filterChange} /> 1080p<br/> 
+           <input type="checkbox" name="1080i_check" value={this.state._1080i_check} onChange={this.filterChange} /> 1080i<br/> 
+           <input type="checkbox"name="720p_check" value={this.state._720p_check} onChange={this.filterChange} /> 720p<br/> 
         </label>
         <hr/> 
       </form>
