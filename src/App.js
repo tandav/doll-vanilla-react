@@ -19,15 +19,15 @@ class App extends Component {
         priceFrom: '',
         priceTo: '',
         isSale: false,
-        LG_check: false,
-        Philips_check: false,
-        Samsung_check: false,
+        LG_check: true,
+        Philips_check: true,
+        Samsung_check: true,
         diagFrom: '',
         diagTo: '',
-        _4k_check: false,
-        _1080p_check: false,
-        _1080i_check: false,
-        _720p_check: false
+        _4k_check: true,
+        _1080p_check: true,
+        _1080i_check: true,
+        _720p_check: true
       }
     }
   }
@@ -88,6 +88,8 @@ class App extends Component {
       prevState.filterparams[name] = value
       return prevState
     })
+
+
   }
 
   render() {
@@ -105,7 +107,16 @@ class App extends Component {
             allProducts={this.state.allProducts} 
             addItem={this.handleAddItem}
           />    
-          <Filter filterProductList = {this.filterProductList} />
+          <Filter filterProductList = {this.filterProductList}
+            isSale={this.state.filterparams.isSale}
+            LG_check={this.state.filterparams.LG_check}
+            Philips_check={this.state.filterparams.Philips_check}
+            Samsung_check={this.state.filterparams.Samsung_check}
+            _4k_check={this.state.filterparams._4k_check}
+            _1080p_check={this.state.filterparams._1080p_check}
+            _1080i_check={this.state.filterparams._1080i_check}
+            _720p_check={this.state.filterparams._720p_check}
+          />
           <Cart 
             items_to_buy={this.state.toBuyProducts} 
             totalPrice={this.state.totalPrice}
