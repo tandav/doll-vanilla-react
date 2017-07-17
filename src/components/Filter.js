@@ -17,34 +17,21 @@ class Filter extends Component {
       _1080p_check: '',
       _1080i_check: '',
       _720p_check: ''
-
-      // filterparams: {
-      //   "price_from": undefined,
-      //   "price_to": undefined,
-      //   "is_sale": undefined,
-      //   "LG_check": undefined,
-      //   "Philips_check": undefined,
-      //   "Samsung_check": undefined,
-      //   "diag_from": undefined,
-      //   "diag_to": undefined,
-      //   "4k_check": undefined,
-      //   "1080p_check": undefined,
-      //   "1080i_check": undefined,
-      //   "720p_check": undefined
-      // }
     }
   }
 
-  priceFrom_change = (event) => {
-    // console.log(event.target.value)
-    // console.log([event.target.name])
-    // let ss =event.target.value
-    this.setState({priceFrom: event.target.value})
-    // console.log(this.state.priceFrom)
-    // console.log(event.target.value)
-    // console.log(typeof(this.state.priceFrom))
-  }
-
+  priceFrom_change         = (event) => this.setState({priceFrom:     event.target.value})
+  priceTo_change           = (event) => this.setState({priceTo:       event.target.value})
+  isSale_change            = (event) => this.setState({isSale:        event.target.value})
+  LG_check_change          = (event) => this.setState({LG_check:      event.target.value})
+  Philips_check_change     = (event) => this.setState({Philips_check: event.target.value})
+  Samsung_check_change     = (event) => this.setState({Samsung_check: event.target.value})
+  diagFrom_change          = (event) => this.setState({diagFrom:      event.target.value})
+  diagTo_change            = (event) => this.setState({diagTo:        event.target.value})
+  _4k_check_change         = (event) => this.setState({_4k_check:     event.target.value})
+  _1080p_check_change      = (event) => this.setState({_1080p_check:  event.target.value})
+  _1080i_check_change      = (event) => this.setState({_1080i_check:  event.target.value})
+  _720p_check_check_change = (event) => this.setState({_720p_check:   event.target.value})
 
   render() {
     return (
@@ -52,12 +39,12 @@ class Filter extends Component {
         <label> 
           Цена:
           <input type="number" name="price_from" placeholder="от" value={this.state.priceFrom} onChange={this.priceFrom_change} />
-          {/* <input type="number" name="price_to" placeholder="до"/> */}
+          <input type="number" name="price_to" placeholder="до" value={this.state.priceTo} onChange={this.priceTo_change} />  
         </label>
         <hr/>
         
         <label>
-          {/* <input type="checkbox" name="is_sale"/> В продаже */}
+           <input type="checkbox" name="is_sale" value={this.state.isSale} onChange={this.isSale_change} /> В продаже 
         </label>
         <hr/>
 
