@@ -10,7 +10,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allProducts: {},
+      allProducts: [],
+      toShowProducts: {},
       toBuyInfo: {},
       toBuyItems: [],
       totalPrice: 0,
@@ -111,16 +112,9 @@ class App extends Component {
             addItem={this.handleAddItem}
           />    
           <Filter filterProductList = {this.filterProductList} />
-          <Cart
-            items_to_buy={this.state.toBuyItems}
-             totalPrice={this.state.totalPrice}
-            priceFrom={this.state.filterparams.priceFrom}
-            priceTo={this.state.filterparams.priceTo}
-            isSale={this.state.filterparams.isSale}
-            LG_check={this.state.filterparams.LG_check}
-            Philips_check={this.state.filterparams.Philips_check}
-            Samsung_check={this.state.filterparams.Samsung_check}
-             
+          <Cart 
+            items_to_buy={this.state.toBuyItems} 
+            totalPrice={this.state.totalPrice}
           /> 
         </div>
       </div>
