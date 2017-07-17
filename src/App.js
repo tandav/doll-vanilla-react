@@ -16,8 +16,8 @@ class App extends Component {
       toBuyProducts: [],
       totalPrice: 0,
       filterparams: {
-        priceFrom: '',
-        priceTo: '',
+        priceFrom: '0',
+        priceTo: '1000000',
         isSale: false,
         LG_check: true,
         Philips_check: true,
@@ -45,6 +45,7 @@ class App extends Component {
           }
         })
       })
+      .then(() => this.filterProducts())
     // this.setState({productList: products_json_from_file}); // TODO: add toBuy
   }
 
@@ -77,25 +78,49 @@ class App extends Component {
     });
   }
 
-  filterProductList = (event) => {
+  updateFilterParams = (event) => {
     // this is from react docs https://facebook.github.io/react/docs/forms.html#handling-multiple-inputs
     const target = event.target
-    const value = target.type === 'checkbox' ? target.checked : target.value
+    let value = target.type === 'checkbox' ? target.checked : target.value
     const name = target.name
+    
+    if (value === '') {
+      switch (name) {
+        case 'priceFrom':
+          value = '0'
+          break
+        case 'priceTo':
+          value = '1000000' // hardcode
+      }
+    }
+      
 
-    // this.setState({filterparams[name]: value})
     this.setState((prevState) => {
       prevState.filterparams[name] = value
+      // prevState.toShowProducts = filtered
       return prevState
+    }, this.filterProducts)
+  }
+
+  filterProducts = () => {
+    this.setState({
+      toShowProducts: this.state.allProducts.filter((p) => {
+        if ( !(p.price >= parseInt(this.state.filterparams.priceFrom, 10) && p.price <= parseInt(this.state.filterparams.priceTo, 10)) ) {
+          return false
+        }
+        // if (p.isSale != this.state.filterparams.isSale) {
+          // return false
+        // } 
+        return true
+      })
     })
-
-
   }
 
   render() {
     if (!this.state.allProducts) {
       return <h1>Loading...</h1>
     }
+
     return (
       <div className="App">
         <div className="App-header">
@@ -104,10 +129,10 @@ class App extends Component {
         </div>
         <div className="Main-section">
           <ProductList
-            allProducts={this.state.allProducts} 
+            products={this.state.toShowProducts} 
             addItem={this.handleAddItem}
           />    
-          <Filter filterProductList = {this.filterProductList}
+          <Filter updateFilterParams = {this.updateFilterParams}
             isSale={this.state.filterparams.isSale}
             LG_check={this.state.filterparams.LG_check}
             Philips_check={this.state.filterparams.Philips_check}
@@ -120,7 +145,7 @@ class App extends Component {
           <Cart 
             items_to_buy={this.state.toBuyProducts} 
             totalPrice={this.state.totalPrice}
-          /> 
+          />
         </div>
       </div>
     );

@@ -7,7 +7,7 @@ class ProductList extends Component {
   render() {
     return (
       <div className="List"> {
-        this.props.allProducts.map(x => <ProductItem
+        this.props.products.map(x => <ProductItem
           key={x.id}
           specs={x}
           addItem={this.props.addItem} />)
