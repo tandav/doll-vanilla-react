@@ -68,6 +68,10 @@ class App extends Component {
     });
   }
 
+  filterProductList = (filterparams) => {
+    return 0
+  }
+
   render() {
     if (!this.state.productList) {
       return <h1>Loading...</h1>
@@ -83,7 +87,7 @@ class App extends Component {
             allProducts={this.state.productList}
             addItem={this.handleAddItem}
           />    
-          <Filter />
+          <Filter filterProductList = {this.filterProductList} />
           <Cart
             items_to_buy={this.state.toBuyItems}
             totalPrice={this.state.totalPrice}
