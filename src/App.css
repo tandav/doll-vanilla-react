@@ -21,3 +21,11 @@
   flex-direction: row;
   justify-content: space-around;
 }
+
+ .List {
+   width: 500px; 
+} 
+
+.Cart {
+  width: 500px;
+}

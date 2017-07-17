@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CartItem from './CartItem';
+import './Cart.css'
 
 class Cart extends Component {
   render() {
@@ -15,9 +16,10 @@ class Cart extends Component {
     return (
     <div className="Cart">
       <h1>Корзина: {this.props.totalPrice} руб.</h1>
+      <button>Оформить</button>
        {cartItems} 
     </div>
-    );
+    )
   }
 }
 

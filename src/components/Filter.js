@@ -5,21 +5,26 @@ class Filter extends Component {
   render() {
     return (
       <div className="Filter">
-        FILTER SECTION
+        Цена, руб:
+        <input type="text" name="price_from" placeholder="от"/>
+        <input type="text" name="price_to" placeholder="до"/>
         <hr/>
-        FILTER SECTION
+        <input type="checkbox"/> В продаже
         <hr/>
-        FILTER SECTION
+        Производитель:<br/>
+        <input type="checkbox"/> LG<br/>
+        <input type="checkbox"/> Philips<br/>
+        <input type="checkbox"/> Samsung<br/>
         <hr/>
-        FILTER SECTION
+        Диагональ:
+        <input type="text" name="diag_from" placeholder="от"/>
+        <input type="text" name="diag_to" placeholder="до"/>
         <hr/>
-        FILTER SECTION
-        <hr/>
-        FILTER SECTION
-        <hr/>
-        FILTER SECTION
-        <hr/>
-        FILTER SECTION
+        Разрешение:<br/>
+        <input type="checkbox"/> 4K<br/>
+        <input type="checkbox"/> 1080p<br/>
+        <input type="checkbox"/> 1080i<br/>
+        <input type="checkbox"/> 720p<br/>
         <hr/>
       </div>
     );

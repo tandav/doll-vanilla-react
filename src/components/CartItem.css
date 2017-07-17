@@ -10,4 +10,9 @@
 .ProductSpecs {
   list-style-type: none;
   width: 200px;
+  font-size: 0.8rem;
+}
+
+.CartItem img {
+  width: 110px; 
 }

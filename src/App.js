@@ -78,7 +78,6 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>TV Store</h2>
         </div>
-
         <div className="Main-section">
           <ProductList
             products={this.state.productList}
