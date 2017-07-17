@@ -11,9 +11,9 @@ class App extends Component {
     super(props);
     this.state = {
       allProducts: [],
-      toShowProducts: {},
+      toShowProducts: [],
       toBuyInfo: {},
-      toBuyItems: [],
+      toBuyProducts: [],
       totalPrice: 0,
       filterparams: {
         priceFrom: '',
@@ -39,9 +39,9 @@ class App extends Component {
       .then(json => {
         this.setState((prevState) => {
           return {
-            productList: json,
+            allProducts: json,
             toBuyInfo: prevState.toBuyInfo,
-            toBuyItems: prevState.toBuyItems
+            toBuyProducts: prevState.toBuyProducts
           }
         })
       })
@@ -49,15 +49,9 @@ class App extends Component {
   }
 
   handleAddItem = (id) => {
-    // SHITTY CODE START
-    // let toBuy_temp = this.state.toBuy
-    // let added_product = this.state.productList.filter(product => product["id"] === id)[0]
-    // toBuy_temp.push(added_product)
-    // SHITTY CODE END
-
     this.setState((prevState) => {
-      const id_index = prevState.productList.findIndex(product => product.id === id)
-      prevState.productList[id_index].sale_items -= 1
+      const id_index = prevState.allProducts.findIndex(product => product.id === id)
+      prevState.allProducts[id_index].sale_items -= 1
 
       if (!prevState.toBuyInfo[id]) {
         prevState.toBuyInfo[id] = 1
@@ -68,7 +62,7 @@ class App extends Component {
 
       let totalPrice = 0
       const temp_cart_products = Object.keys(prevState.toBuyInfo).map(x => {
-        let temp = prevState.productList.filter(product => product["id"] == x)[0]
+        let temp = prevState.allProducts.filter(product => product["id"] == x)[0]
         temp["quantity_to_by"] = prevState.toBuyInfo[x]
         totalPrice += temp["quantity_to_by"] * temp["price"]
         return temp
@@ -77,7 +71,7 @@ class App extends Component {
       return {
         // productList: prevState.productList,
         // toBuyInfo: prevState.toBuyInfo
-        toBuyItems: temp_cart_products,
+        toBuyProducts: temp_cart_products,
         totalPrice: totalPrice
       };
     });
@@ -97,7 +91,7 @@ class App extends Component {
   }
 
   render() {
-    if (!this.state.productList) {
+    if (!this.state.allProducts) {
       return <h1>Loading...</h1>
     }
     return (
@@ -108,12 +102,12 @@ class App extends Component {
         </div>
         <div className="Main-section">
           <ProductList
-            allProducts={this.state.productList}
+            allProducts={this.state.allProducts} 
             addItem={this.handleAddItem}
           />    
           <Filter filterProductList = {this.filterProductList} />
           <Cart 
-            items_to_buy={this.state.toBuyItems} 
+            items_to_buy={this.state.toBuyProducts} 
             totalPrice={this.state.totalPrice}
           /> 
         </div>
