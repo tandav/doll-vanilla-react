@@ -2,31 +2,53 @@ import React, { Component } from 'react';
 import './Filter.css';
 
 class Filter extends Component {
+  // constructor(props) {
+  // super(props);
+  // this.state = {
+  //   priceFrom: undefined,
+  //   priceTo: undefined,
+  // };
+  // }
+
   render() {
     return (
-      <div className="Filter">
-        Цена, руб:
-        <input type="text" name="price_from" placeholder="от"/>
-        <input type="text" name="price_to" placeholder="до"/>
+      <form className="Filter">
+        <label> 
+          Цена:
+          <input type="text" name="price_from" placeholder="от" value={this.state.priceFrom} onChange={this.props.filterProductList(this.state)}/>
+          <input type="text" name="price_to" placeholder="до"/>
+        </label>
         <hr/>
-        <input type="checkbox"/> В продаже
+        
+        <label>
+          <input type="checkbox"/> В продаже
+        </label>
         <hr/>
-        Производитель:<br/>
-        <input type="checkbox"/> LG<br/>
-        <input type="checkbox"/> Philips<br/>
-        <input type="checkbox"/> Samsung<br/>
+
+        <label>
+          Производитель:<br/>
+          <input type="checkbox"/> LG<br/>
+          <input type="checkbox"/> Philips<br/>
+          <input type="checkbox"/> Samsung<br/>
+        </label>
+        <hr/> 
+      
+        <label>
+          Диагональ:
+          <input type="text" name="diag_from" placeholder="от"/>
+          <input type="text" name="diag_to" placeholder="до"/>
+        </label>
         <hr/>
-        Диагональ:
-        <input type="text" name="diag_from" placeholder="от"/>
-        <input type="text" name="diag_to" placeholder="до"/>
-        <hr/>
-        Разрешение:<br/>
-        <input type="checkbox"/> 4K<br/>
-        <input type="checkbox"/> 1080p<br/>
-        <input type="checkbox"/> 1080i<br/>
-        <input type="checkbox"/> 720p<br/>
-        <hr/>
-      </div>
+
+        <label>
+          Разрешение:<br/>
+          <input type="checkbox"/> 4K<br/>
+          <input type="checkbox"/> 1080p<br/>
+          <input type="checkbox"/> 1080i<br/>
+          <input type="checkbox"/> 720p<br/>
+        </label>
+        <hr/> 
+      </form>
     );
   }
 }
