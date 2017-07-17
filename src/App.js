@@ -13,7 +13,21 @@ class App extends Component {
       allProducts: {},
       toBuyInfo: {},
       toBuyItems: [],
-      totalPrice: 0
+      totalPrice: 0,
+      filterparams: {
+        priceFrom: '',
+        priceTo: '',
+        isSale: false,
+        LG_check: false,
+        Philips_check: false,
+        Samsung_check: false,
+        diagFrom: '',
+        diagTo: '',
+        _4k_check: false,
+        _1080p_check: false,
+        _1080i_check: false,
+        _720p_check: false
+      }
     }
   }
 
@@ -68,8 +82,17 @@ class App extends Component {
     });
   }
 
-  filterProductList = (filterparams) => {
-    return 0
+  filterProductList = (event) => {
+    // this is from react docs https://facebook.github.io/react/docs/forms.html#handling-multiple-inputs
+    const target = event.target
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    const name = target.name
+
+    // this.setState({filterparams[name]: value})
+    this.setState((prevState) => {
+      prevState.filterparams[name] = value
+      return prevState
+    })
   }
 
   render() {
@@ -90,7 +113,14 @@ class App extends Component {
           <Filter filterProductList = {this.filterProductList} />
           <Cart
             items_to_buy={this.state.toBuyItems}
-            totalPrice={this.state.totalPrice}
+             totalPrice={this.state.totalPrice}
+            priceFrom={this.state.filterparams.priceFrom}
+            priceTo={this.state.filterparams.priceTo}
+            isSale={this.state.filterparams.isSale}
+            LG_check={this.state.filterparams.LG_check}
+            Philips_check={this.state.filterparams.Philips_check}
+            Samsung_check={this.state.filterparams.Samsung_check}
+             
           /> 
         </div>
       </div>
