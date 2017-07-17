@@ -10,7 +10,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: {},
+      allProducts: {},
       toBuyInfo: {},
       toBuyItems: [],
       totalPrice: 0
@@ -80,7 +80,7 @@ class App extends Component {
         </div>
         <div className="Main-section">
           <ProductList
-            products={this.state.productList}
+            allProducts={this.state.productList}
             addItem={this.handleAddItem}
           />    
           <Filter />
