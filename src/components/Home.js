@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Home from './components/Home';
+import ProductList from './ProductList';
+import Filter from './Filter';
+import Cart from './Cart';
 
-
-import Checkout from './components/Checkout';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
-// import products_json_from_file from './products.json';
-
-class App extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -182,27 +173,37 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <Router>
-      <div className="App">
-        <div className="App-header">
-          <Link to="/"><img src={logo} className="App-logo" alt="logo" /></Link> 
-          <h2>TV Store</h2>
-          <Link to="/checkout">
-            <button className="checkout-button">Оформить</button> 
-          </Link>  
-        </div>
-        
-        {/* <Link to="/">Home</Link>  */}
+    if (!this.state.allProducts) {
+      return <h1>Loading...</h1>
+    }
 
-        <div className="Main-section">
-          <Route exact path="/" component={Home}/>
-          <Route path="/checkout" component={Checkout}/> 
-        </div>
+    return (
+      <div className="Main-section">
+        <ProductList
+          products={this.state.toShowProducts} 
+          addItem={this.handleAddItem}
+        />  
+        <Filter 
+          updateFilterParams={this.updateFilterParams}
+          updateSortParams={this.updateSortParams}
+          sortparams={this.state.sortparams}
+          isSale={this.state.filterparams.isSale}
+          LG_check={this.state.filterparams.LG_check}
+          Philips_check={this.state.filterparams.Philips_check}
+          Samsung_check={this.state.filterparams.Samsung_check}
+          _4k_check={this.state.filterparams._4k_check}
+          _1080p_check={this.state.filterparams._1080p_check}
+          _1080i_check={this.state.filterparams._1080i_check}
+          _720p_check={this.state.filterparams._720p_check}
+        />
+        <Cart 
+          items_to_buy={this.state.toBuyProducts} 
+          totalPrice={this.state.totalPrice}
+        />
       </div>
-      </Router>
     );
   }
 }
 
-export default App;
+export default Home;
+
