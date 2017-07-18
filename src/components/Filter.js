@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import './Filter.css';
 
 class Filter extends Component {
-  // handleSortButtonClick = () => {
-  //   // const sortBy = this.state.sortArrow == '↓' ? '↑' : '↓'
-  //   this.props.updateSortParams()
-  //   // this.setState({
-  //     // sortArrow: sortBy
-  //   // })
-  // }
-
   render() {
     return (
       <div className="Filter">

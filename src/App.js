@@ -76,8 +76,6 @@ class App extends Component {
       })
       
       return {
-        // productList: prevState.productList,
-        // toBuyInfo: prevState.toBuyInfo
         toBuyProducts: temp_cart_products,
         totalPrice: totalPrice
       };
@@ -116,7 +114,6 @@ class App extends Component {
   }
 
   filterProducts = () => {
-    this.sortProducts()    
     this.setState({
       toShowProducts: this.state.allProducts.filter((p) => {
         if ( !(p.price >= parseInt(this.state.filterparams.priceFrom, 10) && p.price <= parseInt(this.state.filterparams.priceTo, 10)) )
@@ -141,17 +138,10 @@ class App extends Component {
           return false
         return true
       })
-    })
+    }, this.sortProducts)
+    
+    
   }
-
-  // updateSortParams = (sortBy) => {
-  //   console.log("updateSortParams")
-  //   this.setState({
-  //     sortparams: {
-  //       price: sortBy === '↓' ? 'desc' : 'asc'
-  //     }
-  //   }, this.sortProducts)
-  // }
 
   updateSortParams = () => {
     console.log("updateSortParams")
