@@ -22,8 +22,8 @@ class App extends Component {
         LG_check: true,
         Philips_check: true,
         Samsung_check: true,
-        diagFrom: '',
-        diagTo: '',
+        diagFrom: '0',
+        diagTo: '1000000',
         _4k_check: true,
         _1080p_check: true,
         _1080i_check: true,
@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const url = 'https://gist.githubusercontent.com/anonymous/a7308e8584e8aa6a7dac5ab20eac0c87/raw/37d7fbb1a8f458648e2c7034e53c398f0c1eb30c/data.json'
+    const url = 'https://gist.githubusercontent.com/tandav/a9186059383d5993819091db900c88ba/raw/15eb60da0ef2025456c05919db4be432045fdea4/products.json'
     fetch(url)
       .then(response => response.json())
       .then(json => {
@@ -84,16 +84,23 @@ class App extends Component {
     let value = target.type === 'checkbox' ? target.checked : target.value
     const name = target.name
     
+    // hardcode ??
     if (value === '') {
       switch (name) {
         case 'priceFrom':
           value = '0'
           break
         case 'priceTo':
-          value = '1000000' // hardcode
+          value = '1000000' 
+          break
+        case 'diagFrom':
+          value = '0'
+          break
+        case 'diagTo':
+          value = '0'
+          break
       }
     }
-      
 
     this.setState((prevState) => {
       prevState.filterparams[name] = value
@@ -105,12 +112,18 @@ class App extends Component {
   filterProducts = () => {
     this.setState({
       toShowProducts: this.state.allProducts.filter((p) => {
-        if ( !(p.price >= parseInt(this.state.filterparams.priceFrom, 10) && p.price <= parseInt(this.state.filterparams.priceTo, 10)) ) {
+        if ( !(p.price >= parseInt(this.state.filterparams.priceFrom, 10) && p.price <= parseInt(this.state.filterparams.priceTo, 10)) )
           return false
-        }
-        if (p.sale_items == 0 && this.state.filterparams.isSale == true) {
+        if (p.sale_items === 0 && this.state.filterparams.isSale === true)
           return false
-        } 
+        if (!(p.diagonal >= parseInt(this.state.filterparams.diagFrom, 10) && p.diagonal <= parseInt(this.state.filterparams.diagTo, 10)) )
+          return false
+        if (p.brand === 'LG' && this.state.filterparams.LG_check === false)
+          return false
+        if (p.brand === 'Philips' && this.state.filterparams.Philips_check === false)
+          return false
+        if (p.brand === 'Samsung' && this.state.filterparams.Samsung_check === false)
+          return false
         return true
       })
     })

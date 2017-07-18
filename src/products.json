@@ -2,6 +2,7 @@
     {
         "id"         : 1,
         "name"       : "LG 32LH530V",
+        "brand"      : "LG",
         "price"      : 14390,
         "sale_items" : 10,        
         "diagonal"   : 32,
@@ -14,6 +15,7 @@
     {
         "id"         : 2,        
         "name"       : "LG 43UH603V",
+        "brand"      : "LG",        
         "price"      : 23790,
         "sale_items" : 0,        
         "diagonal"   : 50,
@@ -26,6 +28,7 @@
     {
         "id"         : 3,                
         "name"       : "Philips 43PFT4001",
+        "brand"      : "Philips",        
         "price"      : 30000,
         "sale_items" : 3,        
         "diagonal"   : 43,
@@ -38,6 +41,7 @@
     {
         "id"         : 4,                
         "name"       : "Samsung UE40K6500AU",
+        "brand"      : "Samsung",        
         "price"      : 40000,
         "sale_items" : 0,        
         "diagonal"   : 32,
@@ -50,6 +54,7 @@
     {
         "id"         : 5, 
         "name"       : "Samsung UE40J5200AF",
+        "brand"      : "Samsung",        
         "price"      : 20000,
         "sale_items" : 2,
         "diagonal"   : 44,
