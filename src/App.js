@@ -124,6 +124,14 @@ class App extends Component {
           return false
         if (p.brand === 'Samsung' && this.state.filterparams.Samsung_check === false)
           return false
+        if (p.resolution === '4K' && this.state.filterparams._4k_check === false)
+          return false
+        if (p.resolution === '1080p' && this.state.filterparams._1080p_check === false)
+          return false
+        if (p.resolution === '1080i' && this.state.filterparams._1080i_check === false)
+          return false
+        if (p.resolution === '720p' && this.state.filterparams._720p_check === false)
+          return false
         return true
       })
     })
