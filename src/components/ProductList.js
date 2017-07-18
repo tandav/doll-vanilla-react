@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './ProductList.css';
 import ProductItem from './ProductItem';
 
-
 class ProductList extends Component {
   render() {
     return (

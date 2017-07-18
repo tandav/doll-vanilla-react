@@ -28,6 +28,9 @@ class App extends Component {
         _1080p_check: true,
         _1080i_check: true,
         _720p_check: true
+      },
+      sortparams: {
+        price: 'desc'
       }
     }
   }
@@ -45,7 +48,10 @@ class App extends Component {
           }
         })
       })
-      .then(() => this.filterProducts())
+      .then(() => {
+        this.filterProducts() // MB: use one more .then here [DEL]
+        this.sortProducts()
+      })
     // this.setState({productList: products_json_from_file}); // TODO: add toBuy
   }
 
@@ -110,6 +116,7 @@ class App extends Component {
   }
 
   filterProducts = () => {
+    this.sortProducts()    
     this.setState({
       toShowProducts: this.state.allProducts.filter((p) => {
         if ( !(p.price >= parseInt(this.state.filterparams.priceFrom, 10) && p.price <= parseInt(this.state.filterparams.priceTo, 10)) )
@@ -137,6 +144,51 @@ class App extends Component {
     })
   }
 
+  // updateSortParams = (sortBy) => {
+  //   console.log("updateSortParams")
+  //   this.setState({
+  //     sortparams: {
+  //       price: sortBy === '↓' ? 'desc' : 'asc'
+  //     }
+  //   }, this.sortProducts)
+  // }
+
+  updateSortParams = () => {
+    console.log("updateSortParams")
+    this.setState({
+      sortparams: {
+        price: this.state.sortparams.price === 'asc' ? 'desc' : 'asc'
+      }
+    }, this.sortProducts)
+  }
+
+  sortProducts = () => {
+    // sorting algorithm here
+
+    // console.log('ddd')
+    let toShow_temp
+
+    if (this.state.sortparams.price === 'asc') {
+      toShow_temp = this.state.toShowProducts.sort((a, b) => {
+        if (a.price < b.price) return -1
+        if (a.price > b.price) return 1
+        return 0
+      })
+    }
+    else {
+      toShow_temp = this.state.toShowProducts.sort((a, b) => {
+        if (a.price > b.price) return -1
+        if (a.price < b.price) return 1
+        return 0
+      })
+    }
+
+    this.setState({
+      toShowProducts: toShow_temp
+    })
+  }
+  
+
   render() {
     if (!this.state.allProducts) {
       return <h1>Loading...</h1>
@@ -153,7 +205,10 @@ class App extends Component {
             products={this.state.toShowProducts} 
             addItem={this.handleAddItem}
           />    
-          <Filter updateFilterParams = {this.updateFilterParams}
+          <Filter 
+            updateFilterParams={this.updateFilterParams}
+            updateSortParams={this.updateSortParams}
+            sortparams={this.state.sortparams}
             isSale={this.state.filterparams.isSale}
             LG_check={this.state.filterparams.LG_check}
             Philips_check={this.state.filterparams.Philips_check}
