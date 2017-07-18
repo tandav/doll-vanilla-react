@@ -108,9 +108,9 @@ class App extends Component {
         if ( !(p.price >= parseInt(this.state.filterparams.priceFrom, 10) && p.price <= parseInt(this.state.filterparams.priceTo, 10)) ) {
           return false
         }
-        // if (p.isSale != this.state.filterparams.isSale) {
-          // return false
-        // } 
+        if (p.sale_items == 0 && this.state.filterparams.isSale == true) {
+          return false
+        } 
         return true
       })
     })
