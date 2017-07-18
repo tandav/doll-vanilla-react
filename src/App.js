@@ -139,12 +139,9 @@ class App extends Component {
         return true
       })
     }, this.sortProducts)
-    
-    
   }
 
   updateSortParams = () => {
-    console.log("updateSortParams")
     this.setState({
       sortparams: {
         price: this.state.sortparams.price === 'asc' ? 'desc' : 'asc'
@@ -177,7 +174,6 @@ class App extends Component {
       toShowProducts: toShow_temp
     })
   }
-  
 
   render() {
     if (!this.state.allProducts) {
@@ -189,6 +185,7 @@ class App extends Component {
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>TV Store</h2>
+          <button className="checkout-button">Оформить</button>
         </div>
         <div className="Main-section">
           <ProductList
