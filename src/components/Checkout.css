@@ -1,0 +1,9 @@
+.checkOutForm {
+  margin-top: 60px;
+}
+.checkOutForm input {
+  height: 40px;
+  width: 500px; 
+  margin: 15px;
+  border: 1px solid grey;
+}

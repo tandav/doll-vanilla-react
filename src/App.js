@@ -196,7 +196,9 @@ class App extends Component {
         {/* <Link to="/">Home</Link>  */}
 
         <div className="Main-section">
-          <Route exact path="/" component={Home}/>
+          <Route exact path="/" component={Home}
+            data={this.state}
+          />
           <Route path="/checkout" component={Checkout}/> 
         </div>
       </div>

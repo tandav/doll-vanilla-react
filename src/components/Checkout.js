@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import './Checkout.css';
 
 class Checkout extends Component {
   render() {
     return (
-      <div>
+      <form className="checkOutForm">
          <input type="text" placeholder="Адрес" /><br/> 
          <input type="text" placeholder="Город" /><br/> 
          <input type="tel" placeholder="Телефон" /><br/> 
@@ -11,7 +12,7 @@ class Checkout extends Component {
          <input type="text" placeholder="Имя" /><br/> 
          <input type="number" placeholder="Кредитная карта" /><br/> 
          <input type="email" placeholder="email" /><br/> 
-      </div>
+      </form>
     );
   }
 }
