@@ -15,13 +15,14 @@ class ProductItem extends Component {
                     onClick={() => this.props.addItem(this.props.specs["id"])}>
                     В корзину: 
                     <br/>
-                    {this.props.specs.price} руб.
                   </button>
+                  {this.props.specs.price} руб.
                 </div>
     }
     else {
       is_sale = <div className="AddToCart">
         <span style={not_sale}>Нет в наличии</span>
+        {this.props.specs.price} руб.
       </div>
     }
 
