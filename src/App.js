@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home';
-
-
 import Checkout from './components/Checkout';
 import {
   BrowserRouter as Router,
@@ -55,7 +53,7 @@ class App extends Component {
         })
       })
       .then(() => {
-        this.filterProducts() // MB: use one more .then here [DEL]
+        this.filterProducts()
         this.sortProducts()
       })
     // this.setState({productList: products_json_from_file}); // TODO: add toBuy
@@ -182,6 +180,28 @@ class App extends Component {
   }
 
   render() {
+    const mainSection = () => {
+      if (this.state.toShowProducts.length === 0) {
+        return <h1>Loading...</h1>
+      }
+      else {
+        return <Home 
+          data={this.state}        
+          handleAddItem={this.handleAddItem}
+          updateFilterParams={this.updateFilterParams}
+          updateSortParams={this.updateSortParams}
+          sortparams={this.state.sortparams}  
+          isSale={this.state.filterparams.isSale} 
+          LG_check={this.state.filterparams.LG_check} 
+          Philips_check={this.state.filterparams.Philips_check} 
+          Samsung_check={this.state.filterparams.Samsung_check} 
+          _4k_check={this.state.filterparams._4k_check} 
+          _1080p_check={this.state.filterparams._1080p_check} 
+          _1080i_check={this.state.filterparams._1080i_check} 
+          _720p_check={this.state.filterparams._720p_check} 
+        />
+      }
+  }
     return (
       <Router>
       <div className="App">
@@ -193,12 +213,8 @@ class App extends Component {
           </Link>  
         </div>
         
-        {/* <Link to="/">Home</Link>  */}
-
         <div className="Main-section">
-          <Route exact path="/" component={Home}
-            data={this.state}
-          />
+          <Route exact path="/" render={mainSection}/>
           <Route path="/checkout" component={Checkout}/> 
         </div>
       </div>
