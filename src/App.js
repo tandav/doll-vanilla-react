@@ -83,7 +83,7 @@ class App extends Component {
         toBuyProducts: temp_cart_products,
         totalPrice: totalPrice
       };
-    });
+    }, this.filterProducts);
   }
 
   updateFilterParams = (event) => {
