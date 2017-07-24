@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './styles/App.css';
-import Home from './components/Home';
-import Checkout from './components/Checkout';
+import logo from '../logo.svg';
+import '../styles/App.css';
+import Home from './Home';
+import Checkout from './Checkout';
 import {
   BrowserRouter as Router,
   Route,
