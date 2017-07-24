@@ -3,6 +3,9 @@ import logo from '../logo.svg';
 import '../styles/App.css';
 import Home from './Home';
 import Checkout from './Checkout';
+import Cart from './Cart';
+import CartButton from './CartButton';
+
 import {
   BrowserRouter as Router,
   Route,
@@ -201,7 +204,19 @@ class App extends Component {
           _720p_check={this.state.filterparams._720p_check} 
         />
       }
-  }
+    }
+
+    const cart = () => <Cart 
+      items_to_buy={this.state.toBuyProducts} 
+      totalPrice={this.state.totalPrice}
+    />
+    
+
+    const cartbutton = () => <CartButton 
+      totalPrice = {this.state.totalPrice} 
+    />
+    
+
     return (
       <Router>
       <div className="App">
@@ -210,12 +225,19 @@ class App extends Component {
           <h2>TV Store</h2>
           <Link to="/checkout">
             <button className="checkout-button">Оформить</button> 
-          </Link>  
+          </Link>
+
+          <Link to="/cart">
+            <CartButton 
+              totalPrice = {this.state.totalPrice} 
+            />
+          </Link>
         </div>
-        
+
         <div className="Main-section">
           <Route exact path="/" render={mainSection}/>
-          <Route path="/checkout" component={Checkout}/> 
+          <Route path="/checkout" component={Checkout}/>
+          <Route path="/cart" component={cart}/> 
         </div>
       </div>
       </Router>

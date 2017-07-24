@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ProductList from './ProductList';
 import Filter from './Filter';
-import Cart from './Cart';
+// import Cart from './Cart';
 
 class Home extends Component {
   render() {
@@ -24,10 +24,10 @@ class Home extends Component {
           _1080i_check={this.props.data.filterparams._1080i_check}
           _720p_check={this.props.data.filterparams._720p_check}
         />
-        <Cart 
+        {/* <Cart 
           items_to_buy={this.props.data.toBuyProducts} 
           totalPrice={this.props.data.totalPrice}
-        />
+        /> */}
       </div>
     );
   }
