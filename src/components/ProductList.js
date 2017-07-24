@@ -8,7 +8,9 @@ class ProductList extends Component {
         this.props.products.map(x => <ProductItem
           key={x.id}
           specs={x}
-          addItem={this.props.addItem} />)
+          addItem={this.props.addItem} 
+          deleteItem={this.props.deleteItem} 
+        />)
       }
       </div>
     );

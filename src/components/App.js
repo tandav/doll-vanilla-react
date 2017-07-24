@@ -89,6 +89,33 @@ class App extends Component {
     }, this.filterProducts);
   }
 
+  handleDeleteItem = (id) => {
+    this.setState((prevState) => {
+      const id_index = prevState.allProducts.findIndex(product => product.id === id)
+      prevState.allProducts[id_index].sale_items += 1
+
+      if (!prevState.toBuyInfo[id]) {
+        prevState.toBuyInfo[id] = 0
+      }
+      else {
+        prevState.toBuyInfo[id] -= 1
+      }
+
+      let totalPrice = 0
+      const temp_cart_products = Object.keys(prevState.toBuyInfo).map(x => {
+        let temp = prevState.allProducts.filter(product => product["id"] == x)[0]
+        temp["quantity_to_by"] = prevState.toBuyInfo[x]
+        totalPrice += temp["quantity_to_by"] * temp["price"]
+        return temp
+      })
+      
+      return {
+        toBuyProducts: temp_cart_products,
+        totalPrice: totalPrice
+      };
+    }, this.filterProducts);
+  }
+
   updateFilterParams = (event) => {
     // this is from react docs https://facebook.github.io/react/docs/forms.html#handling-multiple-inputs
     const target = event.target
@@ -209,6 +236,7 @@ class App extends Component {
     const cart = () => <Cart 
       items_to_buy={this.state.toBuyProducts} 
       totalPrice={this.state.totalPrice}
+      handleDeleteItem={this.handleDeleteItem}
     />
     
 

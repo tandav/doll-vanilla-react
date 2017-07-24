@@ -14,7 +14,9 @@ class Cart extends Component {
       cartItems = <div> {
         this.props.items_to_buy.map(x => <CartItem
           key={x.id}
-          specs={x} />
+          specs={x} 
+          deleteItem={this.props.handleDeleteItem}
+        />
         )
       } </div>
         
