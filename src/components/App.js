@@ -223,9 +223,7 @@ class App extends Component {
         <div className="App-header">
           <Link to="/"><img src={logo} className="App-logo" alt="logo" /></Link> 
           <h2>TV Store</h2>
-          <Link to="/checkout">
-            <button className="checkout-button">Оформить</button> 
-          </Link>
+
 
           <Link to="/cart">
             <CartButton 

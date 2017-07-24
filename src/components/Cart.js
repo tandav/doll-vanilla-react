@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import CartItem from './CartItem';
 import '../styles/Cart.css'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
 class Cart extends Component {
   render() {
@@ -17,6 +22,9 @@ class Cart extends Component {
     <div className="Cart">
       <h1>Корзина: {this.props.totalPrice} руб.</h1>
        {cartItems} 
+        <Link to="/checkout">
+          <button className="checkout-button">Оформить</button> 
+        </Link>
     </div>
     )
   }
