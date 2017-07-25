@@ -22,11 +22,14 @@ class Cart extends Component {
         
     return (
     <div className="Cart">
-      <h1>Корзина: {this.props.totalPrice} руб.</h1>
-       {cartItems} 
+      <div className="miniHeader">
+        <h1>Корзина: {this.props.totalPrice} руб.</h1>
         <Link to="/checkout">
           <button className="checkout-button">Оформить</button> 
         </Link>
+      </div>
+
+      {cartItems} 
     </div>
     )
   }

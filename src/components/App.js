@@ -94,11 +94,9 @@ class App extends Component {
       const id_index = prevState.allProducts.findIndex(product => product.id === id)
       prevState.allProducts[id_index].sale_items += 1
 
-      if (!prevState.toBuyInfo[id]) {
-        prevState.toBuyInfo[id] = 0
-      }
-      else {
-        prevState.toBuyInfo[id] -= 1
+      prevState.toBuyInfo[id] -= 1
+      if (prevState.toBuyInfo[id] == 0){
+        delete prevState.toBuyInfo[id]
       }
 
       let totalPrice = 0
