@@ -24,14 +24,9 @@ class Home extends Component {
           _1080i_check={this.props.data.filterparams._1080i_check}
           _720p_check={this.props.data.filterparams._720p_check}
         />
-        {/* <Cart 
-          items_to_buy={this.props.data.toBuyProducts} 
-          totalPrice={this.props.data.totalPrice}
-        /> */}
       </div>
     );
   }
 }
 
 export default Home;
-

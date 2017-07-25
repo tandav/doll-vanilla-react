@@ -50,8 +50,8 @@ class App extends Component {
         this.setState((prevState) => {
           return {
             allProducts: json,
-            toBuyInfo: prevState.toBuyInfo,
-            toBuyProducts: prevState.toBuyProducts
+            // toBuyInfo: prevState.toBuyInfo,
+            // toBuyProducts: prevState.toBuyProducts
           }
         })
       })
